@@ -127,7 +127,9 @@ function love.mousereleased(mouseX, mouseY, button)
         local flags = 0
         for dy = -1, 1 do
           for dx = -1, 1 do
-            if grid[selectedY + dy][selectedX + dx].state == 'flag' then
+            if grid[selectedY + dy]
+              and grid[selectedY + dy][selectedX + dx]
+              and grid[selectedY + dy][selectedX + dx].state == 'flag' then
               flags = flags + 1
             end
           end
@@ -138,6 +140,8 @@ function love.mousereleased(mouseX, mouseY, button)
           for dy = -1, 1 do
             for dx = -1, 1 do
               if not (dy == 0 and dx == 0)
+                and grid[selectedY + dy]
+                and grid[selectedY + dy][selectedX + dx]
                 and grid[selectedY + dy][selectedX + dx].state ~= 'flag' then
                 -- game over if the revealed cell is flower
                 if grid[selectedY + dy][selectedX + dx].flower then
