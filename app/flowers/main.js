@@ -327,7 +327,6 @@ function draw() {
       // don't change hover effect when game is over
       if (x === selectedX && y === selectedY && !gameOver) {
         if (isMouseDown(0)) {
-          console.debug('mouse is done')
           // make flagged cell always covered background
           if (grid[y][x].state === FLAG) {
             image = COVERED;
